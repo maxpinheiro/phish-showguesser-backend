@@ -1,0 +1,23 @@
+{
+  "name": "phish-showguesser-backend",
+  "version": "1.0.0",
+  "description": "Express backend for persistent data storage of users/guesses for guessing game",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maxpinheiro/phish-showguesser-backend.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/maxpinheiro/phish-showguesser-backend/issues"
+  },
+  "homepage": "https://github.com/maxpinheiro/phish-showguesser-backend#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1"
+  }
+}
