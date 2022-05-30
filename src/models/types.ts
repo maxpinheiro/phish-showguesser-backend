@@ -1,12 +1,20 @@
 export type Date = `${number}-${number}-${number}`;
 
+export type Color = `#${string}` | `rgb(${number}, ${number}, ${number})`;
+
+export interface AvatarConfig {
+    head: Color,
+    torso: Color,
+    background: Color
+}
+
 export namespace User {
     export type UserID = string;//`user-${number}`;
     export interface Type {
         id: UserID,
         username: string,
         password: string,
-        score: number
+        avatar?: AvatarConfig
     }
 }
 
@@ -27,7 +35,7 @@ export namespace Guess {
         songId: Song.SongID,
         songName: string,
         runId: Run.RunID,
-        type: "opener" | "standard" | "encore"
+        encore?: boolean,
         completed?: boolean
     }
 }

@@ -14,7 +14,7 @@ router.get('/', (req, res) => {
     const { userIds } = req.query;
     if (userIds) {
         console.log(`GET => /users?userIds=${userIds.toString()}`);
-        getUserListByIds(userIds.toString().split('-'))
+        getUserListByIds(userIds.toString().split('_'))
             .then(users => {
                 if (users) {
                     res.status(200).json({users});

@@ -25,8 +25,7 @@ export async function createUser(username: string, password: string): Promise<Us
                 'id': `user-${users.length + 1}`,
                 username,
                 password,
-                'score': 0,
-            };
+             };
             users.push(newUser);
             resolve(newUser);
         }
