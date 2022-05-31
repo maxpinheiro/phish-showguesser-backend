@@ -45,7 +45,7 @@ router.get('/:userId', (req, res) => {
         getUserById(userId)
             .then(user => {
                 if (user) {
-                    res.status(200).json({data: {user}});
+                    res.status(200).json({user});
                 } else {
                     res.status(404).json({error: 'User not found.'});
                 }    
@@ -62,7 +62,7 @@ router.post('/', (req, res) => {
         createUser(username, password)
             .then(newUser => {
                 if (newUser) {
-                    res.status(200).json({data: {user: newUser}});
+                    res.status(200).json({user: newUser});
                 } else if (newUser === null) {
                     res.status(409).json({error: 'Username taken.'});
                 } else {
@@ -74,18 +74,17 @@ router.post('/', (req, res) => {
     }
 })
 
-// CONNECT /users : attempt login with credentials
-router.connect('/', (req, res) => {
-    console.log('CONNECT => /users');
-    const body = req.body;
-    if (!body.hasOwnProperty('username')) {
+// POST /users/login : attempt login with credentials
+router.post('/login', (req, res) => {
+    console.log('POST => /users/login');
+    console.log(req.body);
+    const { username, password } = req.body;
+    console.log(`#[${username}]]-[${password}]#`);
+    if (!username) {
         res.status(400).json({error: "Missing username"});
-    } else if (!body.hasOwnProperty('password')) {
+    } else if (!password) {
         res.status(400).json({error: "Missing password"});
     } else {
-        const username = body.username;
-        const password = body.password;
-        
         attemptLogin(username, password)
             .then(result => {
                 if (result instanceof Object) {
